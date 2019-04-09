@@ -1,24 +1,20 @@
-# #vue中为什么使用vuex?应用场景有哪些？
+### 问题（issue）： vuex 是通过什么样的方式提供响应式数据的？
+
+
  
- view --- actions --- state
 
-view 通过中间层actions 修改state;
+###  问题（issue）： $store 是如何挂载到实例this上的？   
 
-当项目庞大的时候：
-
-1. 需要动态的注册响应式数据；
-2. 需要命名空间namespace 来管理组织我们的数据；
-3. 希望通过插件，来更改记录；方便调试；
-以上这些需要和希望，都是我们vuex 需要做的一些事情；
-
-在vuex 中；完成actions mutations state 动作；
-view 通过dispatch 的方式，触发actions 中的动作，在actions 中，可以完成与后端的backend的异步操作；
-
-通过commit 的方式，触发mutations的动作；在mutations 中；同步的方式完成state数据的修改；之所以以同步的方式修改数据，是因为需要再devtools中记录更改前后的数据状态，方便调试debug;
-
-问题：vuex 是通过什么样的方式提供响应式数据的？
-
-
-https://juejin.im/post/5cab66aae51d456e5b66ad12
+    import Vuex from 'vuex'
+    import Vue from 'vue'
+    import App from './App.vue'
     
+    Vue.use(Vuex);
+    
+    const store=new Vuex.Store({});
+    
+    new Vue({
+    store,
+    render:h=>h(App),
+    }).$mount('#App');
     
