@@ -1,5 +1,7 @@
 **vuex 底层原理：**
 
+vuex 推荐map的方式获取原生操作：
+![](https://user-gold-cdn.xitu.io/2019/4/9/16a02c28fec18a99?w=646&h=225&f=png&s=34237)
 **VUE核心概念**
 - state:提供一个响应式数据；
 - Getter:借助Vue的计算属性computed来实现缓存；
@@ -11,8 +13,9 @@
 	2. commit 实际上就是执行mutations 中的某个方法；
 	3. 每次访问State的时候，实际上是访问了重写的get 方法；访问实例中的数据属性；
 	4. ....
+	5. 
 	
-核心代码如下：
+精简核心代码如下,当下仅实现commit：
 
 
     import Vue from 'vue'
