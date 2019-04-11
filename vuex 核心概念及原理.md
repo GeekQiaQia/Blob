@@ -1,6 +1,6 @@
 **vuex 底层原理：**
 
-vuex 推荐map的方式获取原生操作：
+vuex 推荐map的方式代替原生操作：
 ![](https://user-gold-cdn.xitu.io/2019/4/9/16a02c28fec18a99?w=646&h=225&f=png&s=34237)
 **VUE核心概念**
 - state:提供一个响应式数据；
