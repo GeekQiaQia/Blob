@@ -66,7 +66,7 @@ MVC开发模式, 主要讲的是在开发交互应用时，怎样将不同功能
 
 但为了区分于以往的MVC模式，并向facebook的贡献表达敬意，后面我们将把这种优化后的 Model-View-Controller 开发模式在React背景下正式称为Flux模式
 
-
+![](https://user-gold-cdn.xitu.io/2019/4/16/16a26aa3265eabf6?w=525&h=159&f=png&s=14633)
 **问题：**
 
 ```
