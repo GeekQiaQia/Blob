@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    .outter{
+        background: pink;
+        width:500px;
+        height: 200px;
+        display:table;
+        margin:0 auto;
+    }
+    .outter .inner{height: 100px;color:#fff;display: table-cell; vertical-align: middle;}
+    .inner1{background: purple;}
+    .inner2{background: red;}
+    .inner3{background: green;}
+    .tableRow{
+        display: table-row;
+        width: inherit;
+    }
+</style>
+<body>
+
+<div class="outter">
+    <div class="tableRow">
+        <div class="inner inner1">1</div>
+        <div class="inner inner2">2</div>
+        <div class="inner inner3">3</div>
+    </div>
+    <div class="tableRow">
+        <div class="inner inner1">1</div>
+        <div class="inner inner2">2</div>
+        <div class="inner inner3">3</div>
+    </div>
+
+</div>
+
+</body>
+</html>
