@@ -64,7 +64,7 @@ display:table-cell;
 对父级CSS选择器加overflow:hidden样式，可以清除父级内使用float产生浮动。优点是可以很少CSS代码即可解决浮动产生。
 
 2、clear:both清除浮动
-这个css clear清除float产生浮动，可以不用对父级设置高度 也无需技术父级高度，方便适用，但会多加CSS和HTML标签。
+这个css clear清除float产生浮动，可以不用对父级设置高度 也无需计算父级高度，方便适用，但会多加CSS和HTML标签。
 
 1、对父级设置适合CSS高度
 

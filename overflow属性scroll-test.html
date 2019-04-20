@@ -72,4 +72,68 @@ inherit	规定应该从父元素继承 overflow 属性的值。
 </div>
 
 </body>
+<script>
+
+function currying(fn) {
+            var slice = Array.prototype.slice,
+            __args = slice.call(arguments, 1);
+			console.log(arguments)
+			console.log(__args);
+			console.log(fn);
+            return function () {
+                var __inargs = slice.call(arguments);
+				console.log(__inargs);
+				console.log(__args.concat(__inargs));
+                return fn.apply(null, __args.concat(__inargs));
+            };
+        }
+		
+function square(i) {
+    return i * i;
+}
+
+function dubble(i) {
+    return i *= 2;
+}
+
+function map(handeler, list) {
+    return list.map(handeler);
+}
+
+var mapSQ = currying(map, square);
+mapSQ([6, 7, 8, 9, 10]);
+mapSQ([10, 20, 30, 40, 50]);
+// ......
+
+var mapDB = currying(map, dubble);
+
+mapDB([6, 7, 8, 9, 10]);
+mapDB([10, 20, 30, 40, 50]);
+// callee 相当于是当前函数对象的的回掉函数；
+var add = function() {
+    var _this = this,
+    _args = arguments
+	console.log(_args);  // arguments 数组对象；
+    return function() {
+	console.log(arguments);
+        if (!arguments.length) {
+            var sum = 0;
+            for (var i = 0,c; c = _args[i++];){
+			console.log(c);
+			sum += c;
+			
+			} 
+			console.log(sum);
+            return sum
+        } else {
+		    console.log(arguments,_args);
+            Array.prototype.push.apply(_args, arguments) 
+			console.log(_args);
+			console.log(arguments.callee);
+			return arguments.callee
+        }
+    }
+}
+</script>
+
 </html>
