@@ -8,7 +8,8 @@ vm.$slots
 
 详细：
 
-用来访问被插槽分发的内容。每个具名插槽 有其相应的属性 (例如：v-slot:foo 中的内容将会在 vm.$slots.foo 中被找到)。default 属性包括了所有没有被包含在具名插槽中的节点，或 v-slot:default 的内容。
+- 用来访问被插槽分发的内容。每个具名插槽 有其相应的属性 (例如：v-slot:foo 中的内容将会在 vm.$slots.foo 中被找到)。
+- default 属性包括了所有没有被包含在具名插槽中的节点，或 v-slot:default 的内容。
 
 Note: v-slot:foo is supported in v2.6+. For older versions, you can use the deprecated syntax.
 
@@ -29,16 +30,21 @@ Note: v-slot:foo is supported in v2.6+. For older versions, you can use the depr
 	</blog-post>
 
 
+使用全局组件注册：Vue.component(); 组件名称为blog-post;
 
-	Vue.component('blog-post', {
-	  render: function (createElement) {
-	    var header = this.$slots.header
-	    var body   = this.$slots.default
-	    var footer = this.$slots.footer
-	    return createElement('div', [
-	      createElement('header', header),
-	      createElement('main', body),
-	      createElement('footer', footer)
-	    ])
-	  }
-	})
+- 通过createElement()函数来创建一个html 元素；第一个参数是标签名称，第二个参数是标签内容；
+- 通过渲染函数render()来渲染整个组件的html 内容
+
+	
+		Vue.component('blog-post', {
+		  render: function (createElement) {
+		    var header = this.$slots.header
+		    var body   = this.$slots.default
+		    var footer = this.$slots.footer
+		    return createElement('div', [
+		      createElement('header', header),
+		      createElement('main', body),
+		      createElement('footer', footer)
+		    ])
+		  }
+		})
