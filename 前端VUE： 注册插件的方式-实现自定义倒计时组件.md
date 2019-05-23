@@ -102,7 +102,7 @@ talk is cheap,show me the code
     
 ## 如何使用vue倒计时countdown自定义组件
 
-    <count-down @onTimeout="handleTimeout" seconds="60" name="myCountDown" tips="s后重新发送"></count-down>
+     <count-down v-if="hasSendCode"  @onTimeout="handleTimeout" seconds="60" name="getCode" tips="s后重新发送"></count-down>
         
         接口定义：
         onTimeout         当倒计时结束以后调用的函数
@@ -113,7 +113,41 @@ talk is cheap,show me the code
         类定义：
         counter           根据UI设计需求自定义样式
         
+
+举例：
+
+    // 举例：倒计时结束执行函数处理；
+    handleTimeout(){
+      console.log("timeout of the clock");
+      this.hasSendCode=!this.hasSendCode;
+    }
         
+    //举例：axios post请求过程中对hasSendCode 状态的处理,判断是否显示倒计时
+     getverifyCode(reqData)
+              .then(res=>{
+                if(res.data&&res.data.CODE==="1007"){
+                  this.hasSendCode=false;
+                  this.$message({
+                    message:"该手机号尚未注册！",
+                    type:"warning"
+                  });
+                }else if(res.data.CODE==="200"){
+                  this.hasSendCode=true;
+                  this.$message({
+                    message:"手机验证码发送成功，请在规定时间内完成验证",
+                    type:"success"
+                  });
+                }
+              })
+              .catch(err=>{
+                console.log(err);
+                this.hasSendCode=false;
+                this.$message({
+                  message:err.toString(),
+                  type:"error"
+                });
+              });
+    
 [github地址](https://github.com/GeekQiaQia/vueJS-countDown)
 大家可以提出自己的需求和存在的问题，我们共同完善
     
