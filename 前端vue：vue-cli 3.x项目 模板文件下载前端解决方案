@@ -1,0 +1,97 @@
+# vue-cli 3.x环境安装：
+
+## 1.vue-cli 脚手架3.x安装：
+
+    npm install -g @vue/cli
+![](https://user-gold-cdn.xitu.io/2019/5/30/16b08c832602c549?w=641&h=917&f=png&s=59398)
+## 2.验证安装成功
+
+    vue  
+![](https://user-gold-cdn.xitu.io/2019/5/30/16b08dce9d08d4b0?w=677&h=538&f=png&s=57824)
+
+如果遇到如下错误提示：
+
+    'vue' 不是内部或外部命令，也不是可运行的程序
+    或批处理文件。
+呐，一定是系统属性中全局安装环境变量，么有配置：
+
+    举例：path:D:\Program Files\nodejs\node_global    
+## 3.创建一个项目hello-world:
+
+![](https://user-gold-cdn.xitu.io/2019/5/30/16b08ede739996db?w=643&h=678&f=png&s=31843)
+
+![](https://user-gold-cdn.xitu.io/2019/5/30/16b08f07c1cccb14?w=1071&h=511&f=png&s=44347)
+首先我们可以先看看vue-cli 3.x 脚手架目录更加清晰简约，省去了2.x版本的webpack配置的东西；
+
+而实际上是将配置文件包放在了node_modules里面了；
+
+**开发者需要关注两个注意点**：
+
+- src目录下的文件，是开发源代码以及资源文件；当执行npm run build 命令时，webpack将src目录的文件进行打包编译；
+- public目录下的文件，存放的是index.html以及不需要被打包编译的文件，当执行npm run build 命令打包时，该目录下的文件，将原样输出到dist目录；
+
+## 模板文件下载前端解决方案:
+
+需求：
+
+- 当用户点击“模板下载”按钮，此时web客户端执行文件下载（如:“.xlsx”格式文件），（此过程不经过请求后端以文件服务器url地址请求的方式下载或者后端返回文件流的方式，前台对文件流进行处理的方式下载；）如图所示：
+
+![](https://user-gold-cdn.xitu.io/2019/5/30/16b09029f1c1bfbf?w=529&h=334&f=png&s=16655)
+
+分析:
+- 通过将需要下载的静态**资源文件**存放在web端，当点击<button>下载模板</button>按钮的时候，执行window.open("relative URL");// ps:<a> 标签兼容性不好；
+- "relative URL" 为打包以后相对于根页面index.html文件的相对目录；
+- 在vue项目中cli 3.x脚手架创建的项目，将不需要被打包编译的资源文件存放在public目录之下
+- 在vue项目中cli 2.x脚手架创建的项目，将不需要被打包编译的资源文件存放在static目录之下
+
+如图所示：为cli 3.x 项目下模板文件存放路径；以及打包编译后dist目录
+
+![](https://user-gold-cdn.xitu.io/2019/5/30/16b09126f735ba86?w=465&h=820&f=png&s=41597)
+**此时点击下载，将执行web端资源文件下载，这种情况适用于格式固定的模板文件下载前端解决方案；**
+
+代码：
+
+    <em @click="fetchTemplate">下载模板</em>
+ 
+uploadFile.vue
+
+     <el-upload
+                    class="upload-excel"
+                    drag
+                    show-file-list
+                    :limit="uploadLimit"
+                    :on-exceed="handleExceed"
+                    :before-upload="beforeUploadExcel"
+                    :on-success="handleUploadSuccess"
+                    :on-error="handleUploadError"
+                    :action="actionUrl"
+                    multiple>
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>浏览文件上传</em></div>
+              <div class="el-upload__tip" slot="tip">只能上传一个xlsx/xls格式文件，且不超过10MB <em @click="fetchTemplate">下载模板</em> </div>
+            </el-upload>
+            <span slot="footer" class="dialog-footer  uploadFooter">
+                    <el-button type="primary"  :disabled="canReview" class="btn confirmBtn" @click="uploadDialogVisible = false;reviewExcelData()">预览</el-button>
+                    <el-button class=" btn cancelBtn" @click="uploadDialogVisible = false">取 消</el-button>
+                 </span>
+          </el-dialog>
+          
+
+javascript：
+
+    <script>
+    exprot default{
+        method:{
+            fetchTemplate(){
+          window.open("./file/uploadFile.xls");
+        }
+        }
+    }
+    </scritp>
+
+
+    
+    
+    
+    
+    
