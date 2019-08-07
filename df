@@ -1,0 +1,415 @@
+[33mcommit 372a960dcd8e77de2fc840007f293381812fd2f5[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Fri Jun 28 16:35:29 2019 +0800
+
+    reg
+
+[33mcommit 3378edb54033c079ce106eb30754592355e1b65a[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Tue Jun 25 10:25:45 2019 +0800
+
+    reg
+
+[33mcommit 6f01aa1ae94e2fbb77ed1a94e871c6edff1d568b[m
+Merge: 433dc37 0bd6b02
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Thu May 30 22:21:36 2019 +0800
+
+    Merge branch 'master' of https://github.com/GeekQiaQia/Blob
+
+[33mcommit 433dc375d08a4ec60eef04ed109da19358d14ea6[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Thu May 30 22:21:28 2019 +0800
+
+    前端vue：vue-cli 3.x项目 模板文件下载前端解决方案
+
+[33mcommit 0bd6b02c0a564521f7f3b5d55c6ab2eb5c66649d[m
+Author: 喜个阳阳 <xiyangbai@outlook.com>
+Date:   Wed May 29 22:40:15 2019 +0800
+
+    Add files via upload
+
+[33mcommit 7a291798adb61203a88d2437fda4390a2f372d0a[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Thu May 23 11:53:23 2019 +0800
+
+    如何合理的控制显示隐藏倒计时
+
+[33mcommit 9ec75f9145e8e5cd548106233f797f9c66a335b0[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Thu May 23 10:43:47 2019 +0800
+
+    前端VUE： 注册插件的方式-实现自定义倒计时组件
+
+[33mcommit ce43dc6e62b119471c58974118f1202546ccb8d3[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Tue May 21 08:48:53 2019 +0800
+
+    markdown
+
+[33mcommit 37022d65497d43dff007d283ef31f8db4bda75bb[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Tue May 21 08:39:08 2019 +0800
+
+    前端VUE ： 开发环境搭建
+
+[33mcommit c8fabbdcc616a74cc4e5eb8f82cc9b52c1fa8175[m
+Author: geekQiaQia <xiyangbai@outlook.com>
+Date:   Fri May 17 10:06:40 2019 +0800
+
+    test purang
+
+[33mcommit 6f49d104e72b18da323f2638061ea1d4c4d82e6e[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Fri May 10 20:35:31 2019 +0800
+
+    权限指令
+
+[33mcommit e1d6a74fdb6de6c953064ef37003b2b07ac449ff[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Wed May 8 23:46:02 2019 +0800
+
+    插件的使用和开发
+
+[33mcommit 5f826c2a9f1e44b0b7fcfaba540ae601e8286900[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Wed May 8 00:05:06 2019 +0800
+
+    前端vue：权限控制之权限指令
+
+[33mcommit 5d6367705dd48bc2217e12ea86901f2b9507c5bf[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Tue May 7 17:52:18 2019 +0800
+
+    前端Vue：函数式组件
+
+[33mcommit 0da050be0e01aba6e46d1edc2e3d1c22a598e7f3[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Mon May 6 23:31:28 2019 +0800
+
+    权限组件
+
+[33mcommit e7d1981640ce2f936449147d33b1637e90e09b04[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Mon May 6 23:03:58 2019 +0800
+
+    前端vue：权限控制之组件权限
+
+[33mcommit 01a461af7972d87869d779e2055cfa81a48f16af[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sun May 5 23:32:49 2019 +0800
+
+    前端vue：createElement()的数据对象之“事件修饰符和插槽”
+
+[33mcommit 0cc643729c8c06e73a12e89742654eaf9f4665b3[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sun May 5 23:08:20 2019 +0800
+
+    前端Vue：createElement()函数你了解多少
+
+[33mcommit 1a5afcbf1340a662a9083285d922fd4c1fc42aae[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sun May 5 22:23:28 2019 +0800
+
+    前端vue：节点、树以及虚拟 DOM
+
+[33mcommit f06d5497ac19958395f2c5b6128ea896514eef26[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Wed May 1 23:39:39 2019 +0800
+
+    函数式
+
+[33mcommit 850de13b914fd213ed3f0ac5546b81049f5e4136[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Tue Apr 30 23:10:57 2019 +0800
+
+    前端VUE：实例属性&&函数式组件
+
+[33mcommit ea3800f578e8af2c4cff3b38e3fc095c97a59b49[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Mon Apr 29 22:41:20 2019 +0800
+
+    前端JS： 通过代码-看函数作用域this对象
+
+[33mcommit dfa347410d53da66e2fe16545b66ea75d89276da[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sat Apr 27 17:05:57 2019 +0800
+
+    前端JS：一道题引发的原型链问题以及函数作用域中的this对象
+
+[33mcommit e8c8cae77f2e4c52c31444cac82c66c8c6e596a7[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Fri Apr 26 00:49:01 2019 +0800
+
+    前端JS：javascript 中创建对象的方式有哪些？
+
+[33mcommit 9699be699e1ad38802e3bdd30a0a4e5894fdab13[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Thu Apr 25 23:03:35 2019 +0800
+
+    前端编程题目1
+
+[33mcommit a8f513e44708d366b7dad1f56a231318b0620290[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Wed Apr 24 23:49:41 2019 +0800
+
+    前端JS：深拷贝和浅拷贝的理解
+
+[33mcommit 53be9b0d9b9e266343b108c454806bf90f39f302[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Wed Apr 24 00:10:17 2019 +0800
+
+    前端vue：ElementUI源码之flux思想在组件开发table-store.js中的应用
+
+[33mcommit e1a34e59725a1dc7e1e70ca1cb4c86f9a6838c80[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Tue Apr 23 11:24:02 2019 +0800
+
+    前端算法：顺序查找之二分法查找
+
+[33mcommit f14acd16a48ffe0f1199f12f82e1667dc829d4c6[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Tue Apr 23 01:32:26 2019 +0800
+
+    前端适配：移动端适配布局方案
+
+[33mcommit d7f0685e3a35f92433fa5071dba0af110141edf8[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Tue Apr 23 01:28:29 2019 +0800
+
+    前端适配：移动端适配布局方案
+
+[33mcommit 66a8202edac290c63704a9e25a033d1584f36469[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Tue Apr 23 00:05:25 2019 +0800
+
+    移动端适配布局方案
+
+[33mcommit 6a859620dbd157afcb7454ffb47ada47bace7c28[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sun Apr 21 23:00:08 2019 +0800
+
+    前端算法：快速排序算法
+
+[33mcommit e9d170df49ac8930f7e4844e41c9c2f981a2b2a2[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sun Apr 21 21:23:45 2019 +0800
+
+    web storage
+
+[33mcommit 4b96a19d88d01e2f6e4759cc4692af10501dbadc[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sat Apr 20 23:58:45 2019 +0800
+
+    update
+
+[33mcommit 1c75807da8b211eccf4d83a8f0c6a418ab2c058c[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sat Apr 20 13:07:24 2019 +0800
+
+    scroll style
+
+[33mcommit 85f7d91df7ec609a981da9ed5767f2e23a680788[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Sat Apr 20 12:58:13 2019 +0800
+
+    前端面试：如何修改overflow scroll 滚动条的默认背景色以及宽度 前端JS：arrayObject 修改原数组的操作有哪些
+
+[33mcommit bbccf18de6a7a7032db9001744fe049cfaea8ee5[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Fri Apr 19 23:47:48 2019 +0800
+
+    前端web
+
+[33mcommit 257cc6849899e5ca054304d69cca4838118c6e6d[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Fri Apr 19 00:00:46 2019 +0800
+
+    前端面试：javascript 中清空数组的几种方法
+
+[33mcommit 06a753ea03158ca954f39d195ae79502be61d19d[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Thu Apr 18 23:26:39 2019 +0800
+
+    css 如何使得元素内容居中 js 函数去抖 如何清除intput 输入框中的历史记录
+
+[33mcommit ef4b7d72509aac6306f51eff34c21451c8356c17[m
+Author: GeekQiaQia <xiyangbai@outlook.com>
+Date:   Thu Apr 18 00:14:14 2019 +0800
+
+    git contributors lost
+
+[33mcommit c56c1302a0173f8723124c091c494ae8b0ff68cb[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Wed Apr 17 11:34:34 2019 +0800
+
+    script 中defer async 属性  什么是repaint&&reflow
+
+[33mcommit ae50cb69643b8a7ec7292db07b62fd80bc77b4be[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Tue Apr 16 23:04:02 2019 +0800
+
+    ReactJS &Flux &Redux 设计思想和关系
+
+[33mcommit d9e0f85779389cfe739afda6b5856f35c1c7c499[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Tue Apr 16 22:49:26 2019 +0800
+
+    dva redux vuex 等框架解决了什么问题
+
+[33mcommit 3ec545596b4f9202231fc731ab02a83bc451ae80[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Tue Apr 16 17:07:26 2019 +0800
+
+    前端面试：常见web性能优化
+
+[33mcommit 5b0f2648e6a9281d20d64018300e0a654db48325[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Mon Apr 15 23:28:28 2019 +0800
+
+    javascript 面试基础知识
+
+[33mcommit cb38d8343933d2131b179308a2688acb7d25b0f3[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Mon Apr 15 22:41:50 2019 +0800
+
+    javascript 实现继承的几种方式
+
+[33mcommit 5c27d49c5b3d8f2244f24de9cabcb8a18143bb8e[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Mon Apr 15 22:09:48 2019 +0800
+
+    Vue 开发中提升开发效率和体验的常用工具
+
+[33mcommit 3d5ca14f49b8b80beda5998397cd558627a5e89d[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 14 23:30:25 2019 +0800
+
+    SSR(Server side render) 核心原理是什么？
+
+[33mcommit 5c1af891cf826040534ae0fc5a6ee06aefbfc6a1[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 14 22:57:22 2019 +0800
+
+    NuxtJS 解决了服务端SSR（server side render）问题
+
+[33mcommit 323ee5792b895dad6c5e373378f9a8718d5cc1a0[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 14 18:23:58 2019 +0800
+
+    Vue中路由的模式以及底层原理
+
+[33mcommit 983e8496b001cf31581c65ec9cf868c3a6d10657[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 14 17:52:19 2019 +0800
+
+    ES6
+
+[33mcommit bed0b4b4fa25163a048867400270147d6ad632f8[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sat Apr 13 12:58:17 2019 +0800
+
+    小程序 ECharts
+
+[33mcommit f206dbf9ce1d6ba03c7d48a15b789fb355673c02[m
+Merge: 9870758 6b72c42
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Fri Apr 12 22:09:02 2019 +0800
+
+    commit something
+
+[33mcommit 98707581ae87473889ba7882130853a085104df3[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Fri Apr 12 22:04:29 2019 +0800
+
+    forget to git something
+
+[33mcommit 6b72c4202f57c09022ad6bd5bef854a467be0d1b[m
+Author: 喜个阳阳 <xiyangbai@outlook.com>
+Date:   Fri Apr 12 14:50:57 2019 +0800
+
+    Update README.md
+
+[33mcommit 46967e4475897f8b97d53649336d3dd75603c283[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Fri Apr 12 14:48:46 2019 +0800
+
+    ReactJS &Flux &Redux 设计思想和关系
+
+[33mcommit d023695a0ed60352377c05cfcec5147f234b1e8c[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Thu Apr 11 22:59:32 2019 +0800
+
+    前端面试题：冒泡排序 选择排序
+
+[33mcommit dc8f7ee3d476d797081cd43645bbf24dacdfe5b3[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Tue Apr 9 23:44:36 2019 +0800
+
+    vuex 中的核心概念及原理
+
+[33mcommit 9fcd769afd18e9dc7ff426ab37b0c8086136d5f9[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Tue Apr 9 23:04:24 2019 +0800
+
+    vuex 核心概念及原理
+
+[33mcommit a88e55701c165aa878a7ee732f1afa03b5c1d80d[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Mon Apr 8 23:31:36 2019 +0800
+
+    Vue中为什么使用vuex
+
+[33mcommit b927f3720ec362afe8c51da410e75814d342da1c[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Mon Apr 8 22:39:11 2019 +0800
+
+    Vue中的计算属性和侦听器比较
+
+[33mcommit 6d28ce5d4e702d2a29d11cb14ff6e34078e803c2[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 7 22:04:52 2019 +0800
+
+    note
+
+[33mcommit 4b2c8ccb1336d5df96885b8be2997b367d34a34c[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 7 21:48:40 2019 +0800
+
+    Vue 中为何不可以使用index 作为key
+
+[33mcommit a2881af52e7f16a78b31bc1b570e77754f26bea8[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sun Apr 7 20:28:28 2019 +0800
+
+    Vue中双向绑定VS单向数据流
+
+[33mcommit a8db052fe5d6351356410c2779fbadbca44d96b4[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sat Apr 6 22:44:57 2019 +0800
+
+    Vue 中 $emit()返回值是什么
+
+[33mcommit a40f2536f974308be48ee7871cacc777e0b93079[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Wed Apr 3 23:55:46 2019 +0800
+
+    dailyIssue vue子组件为何不可以修改父组件传递的Prop值
+
+[33mcommit aff6452ac4fabdf94a932d7ccc70f1c1a9762056[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Tue Apr 2 10:55:53 2019 +0800
+
+    https 的理解以及如何进行客户端证书校验
+
+[33mcommit 3920599285e2e6f0167a287ad5012a03f5a9c12c[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sat Mar 23 17:21:12 2019 +0800
+
+    add git.doc
+
+[33mcommit d8c776807e11a47be03c8b5410bfc6ddb19cc58d[m
+Author: Sky Bai(白喜阳) <baixiyang@inspur.com>
+Date:   Sat Mar 23 17:18:40 2019 +0800
+
+    first commit
