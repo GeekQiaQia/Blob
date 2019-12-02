@@ -1,0 +1,107 @@
+
+[Github qrcode](https://github.com/aralejs/qrcode)
+
+* vue:2.6
+
+* typescript:3.6.4 
+## 生成二维码利用qrcodejs2模块；
+### 在template中写入如下代码：
+
+
+         <div  key="qrCode" style="text-align: center;">
+            <div   id="qrcode" ref="qrcode"  class="scan-code">
+                <div v-if="qrcodeCancel">
+                    <div style="margin-top: 27px;"><span class="qrcode-restart"> 二维码已失效</span></div>
+                     <div style="margin-top: 27px;"> <el-button class="btn confirm " style="width: 101px ;height:25px;" @click="handleClickRestart" >点击刷新</el-button><br></div>
+                </div>
+            </div>
+        </div>                           
+### 在.vue script 脚本中：
+* 下载模块：
+
+         // @ts-ignore
+        import md5 from 'js-md5'
+*  生成QRCode 二维码对象；
+    
+          /**
+         * @description； 扫码登录，生成二维码
+         * */
+        public genereateQrCode () {
+            let qrcode = new QRCode('qrcode',{
+                width: 127, // 设置宽度，单位像素
+                height: 127, // 设置高度，单位像素
+                text: this.qrcodeLink // 设置二维码内容或跳转地址
+            })
+        }
+
+ * 通过setInterval()轮询去检查二维码状态，来作出对应的交互；根据项目需要的场景;举例：
+    
+           /**
+         * @description: 点击重新获取登录二维码
+         * */
+        public async handleClickRestart():Promise<void>{
+            let timer:any;
+            let that=this;
+            that.qrcodeCancel=false;
+            // @ts-ignore
+            await qrcodeLoginApply()
+                .then((res:any)=>{
+                    console.log(res);
+                    // 生成最新的二维码标识；
+                    this.qrcodeLink=res.data.qrcode;
+                    // 开始监听
+                    timer=setInterval( async function () {
+                        // @ts-ignore
+                        let qrcode=that.qrcodeLink.split("&")[1].split("=")[1]
+                        let reqData={qrcode:qrcode};
+                        if(that.loginWay===true){
+                            clearInterval(timer);
+                        }
+                        // 轮循检查扫码状态；
+                        await qrcodeLoginCheck(reqData)
+                            .then((res:any)=>{
+                                console.log(res);
+                                let responseCode=res.data.responseCode;
+                                if(responseCode===12591){
+                                    that.loginSuccess=true;
+                                } else if(responseCode===12592){
+                                    that.changeTips("success","登录成功");
+    
+                                    let yyttoken = res.headers.yyttoken;
+                                    // 更改登录状态以及登录用户信息；
+                                    // that.$store.dispatch("UPDATE_LOGIN_INFO_ASYN", {yyttoken});
+                                    // that.$store.dispatch("UPDATE_USER_INFO_STATE_ASYN");
+                                    clearInterval(timer);
+                                    setTimeout(function () {
+                                        that.handleClose();
+                                    },3000)
+    
+                                }else if(responseCode===12593){
+                                    that.changeTips("warning","二维码已失效");
+                                    that.loginSuccess=false;
+                                    that.qrcodeCancel=true;
+                                    clearInterval(timer);
+                                }
+                            })
+                            .catch((err:any)=>{
+                                that.$message({
+                                    type: "error",
+                                    message: err
+                                });
+                            })
+                    },2000)
+                })
+                .catch((err:any)=>{
+                    this.$message({
+                        type: "error",
+                        message: err
+                    });
+                })
+            // 下一个时间轮循执行生成二维码；
+            this.$nextTick(() => {
+                this.genereateQrCode()
+            });
+        }
+[参考Github qrcode源码](https://github.com/aralejs/qrcode)
+
+[github源码示例](https://github.com/GeekQiaQia/vueWithTSPro.git)
