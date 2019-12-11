@@ -1,0 +1,19 @@
+    vue:2.6
+    typescript:3.6.4
+    cli:3.0
+[Github示例](https://github.com/GeekQiaQia/vueWithTSPro)
+* 在package.json文件同目录下，新建".env.uat"文件；
+    * NODE_ENV变量不变；修改变量：VUE_APPCURRENTMODE变量为run命令"uat"，如图所示:
+
+
+![](https://user-gold-cdn.xitu.io/2019/12/11/16ef2a7e74e79b0d?w=1253&h=645&f=png&s=46452)
+* 在package.json 中"scripts"重新增命令uat:
+    * "uat": "vue-cli-service build --mode uat"
+
+![](https://user-gold-cdn.xitu.io/2019/12/10/16eef3734d4ff825?w=1301&h=595&f=png&s=90796)
+* 此时执行npm run uat 进行打包，与执行 npm run build 一样，只不过mode模式换成了--mode uat;执行.env.uat文件的环境变量。
+* 我们在项目上线的时候，往往需要进过**test** **uat** **prod**等不同的环境验证以后才最后**发布上线**；这时需要在不同的mode下，请求不同的后台服务，我们可以根据VUE_APPCURRENTMODE变量来判断当前环境，请求对应的服务；如图所示:
+ 
+![](https://user-gold-cdn.xitu.io/2019/12/11/16ef2b4e16924018?w=1311&h=742&f=png&s=117442)
+
+[Github示例](https://github.com/GeekQiaQia/vueWithTSPro)
