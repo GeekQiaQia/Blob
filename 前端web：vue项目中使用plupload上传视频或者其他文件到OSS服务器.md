@@ -1,11 +1,17 @@
 [项目案例：](https://github.com/GeekQiaQia/plupload-vue)
 
-参考： [web端上传视频到云服务器](https://help.aliyun.com/document_detail/31925.html?spm=a2c4g.11186623.6.1518.504a6e28kYHbMY)
+参考： 
+
+* [web端上传视频到云服务器](https://help.aliyun.com/document_detail/31925.html?spm=a2c4g.11186623.6.1518.504a6e28kYHbMY)
+
+* [plupload附件上传插件中文文档及使用总结](https://blog.csdn.net/qappleh/article/details/80112102)
+
 开发环境及依赖：
 
 * 开发工具：[HBuilderX](https://www.dcloud.io/hbuilderx.html)；
 * 项目：[uni-app/vue](https://uniapp.dcloud.io/)
 * 主要依赖：[plupload](https://www.npmjs.com/package/plupload)
+
 
 ## 采用oss文件存储有三种方式：
 * [Web端PostObject直传方式](https://help.aliyun.com/document_detail/31923.html?spm=a2c4g.11186623.6.1517.410649e8Pu25Ij)；
