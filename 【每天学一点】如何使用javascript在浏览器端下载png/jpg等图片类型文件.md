@@ -34,13 +34,13 @@ export const urlToBlob = (the_url, callback) => {
       });
       message.success('生成海报成功！');
 ```
-
-## 什么是 Blob 类文件对象
+## 扩展知识点
+### 什么是 Blob 类文件对象
 [Blob|MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Blob)
 
 ![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d0bf8638f142413ab64a488c1ee68db8~tplv-k3u1fbpfcp-watermark.image)
 
-## 什么是 XMLHttpRequest
+### 什么是 XMLHttpRequest
 [XMLHttpRequest](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)
 
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/284f815ac1474ad68c070ca81d36a87f~tplv-k3u1fbpfcp-watermark.image)
