@@ -1,4 +1,10 @@
+---
+theme: mk-cute
+highlight: tomorrow-night-eighties
+---
 # 如何使用javascript在浏览器端下载png/jpg等图片类型文件
+## 需求背景
+当我们前端下载一个文件的时候，chrome等浏览器遇到可以解析的文件，会优先打开该文件而不是下载，比如png/jpg等图片类型文件、pdf类型文件等。而有时我们的需求是希望点击下载交互时，实现文件下载而不是打开；以下以图片url文件举例：
 ## 解决方案1：url转为Blob文件对象
 ### 图片url转换为Blob类文件对象封装
 ```js
