@@ -376,6 +376,445 @@ const thenPromise = new myPromise((resolve, reject) => {
 
 //***************************************************************************//
 
+//*******************************手写一个浅克隆********************************************//
+// 浅克隆，只拷贝数组或者对象的第一层内容；
+// 判断是否是对象， array 或者 {}； 如果是对象则遍历对象属性；
+const shallClone =(target)=>{
+   if(typeof target==='object'&&target!==null){
+      // 
+      const cloneTarget=Array.isArray(target)?[]:{};
+      for(let key in target){
+         if(target.hasOwnProperty(key)){
+            cloneTarget[key]=target[key]
+         }
+      }// end of for 
+      return cloneTarget;
+   }else{
+      return target;
+   }
+}
+
+//*******************************手写一个深克隆********************************************//
+// 递归调用给每一个对象属性进行赋值； 只考虑array  {}
+function deepClone(target){
+   if(target==null){
+      return null
+   }
+   if(typeof target !=='object'){
+      return target
+   }
+   const deepTarget=Array.isArray(target)?[]:{}
+   // 否则进行遍历深度递归；
+   for(let key in target){
+      if(target.hasOwnProperty(key)){
+         deepTarget[key]=deepTarget(target[key])
+      }
+   }// end of for 
+   return deepTarget;
+}
+
+
+//*******************************手写一个数组去重********************************************//
 
 
 
+function debounce (fun,wait=500){
+  let timer=null
+  return function anonymous(...params){
+    clearTimeout(timer);
+    timer=setTimeout(()=>{
+       timer=null;
+       fun.call(this,...params);
+    },wait);
+  }
+}
+
+
+function throttle(fun,wait){
+  let timer=null,preivous=0;
+  return function anonymous(...params){
+    let now=new Date();
+    let remaining=wait-(now-preivous)  // 维护一个剩余执行时间；
+    if(remaining<0){  // 则可以放行执行
+      clearTimeout(timer);
+      timer=null;
+      preivous=new Date();
+      fun.call(this,...params);
+
+    }else if(!timer){ // 第一次触发；
+      timer=setTimeout(()=>{
+         // 执行完清除计时器；
+         clearTimeout(timer);
+         timer=null;
+         preivous=new Date();
+         fun.call(this,...params);
+      },remaining);
+    }
+  }
+}
+
+
+// Object.create
+Object.create=function create(prototype){
+   if(prototype==null||typeof prototype !=='object'){
+      throw new TypeError('object');
+   } 
+   // 空构造函数；让其原型属性指向传入的原型对象；
+   function Temp(){}
+   Temp.__proto__=prototype;
+   return new Temp; 
+}
+
+
+function _new(Fun,...args){
+   let obj=Object.create(Fun.prototype);
+   let res=Fun.call(obj,...args);
+    
+   // 返回值判断；
+   if(res!==null&&/^(object|function)$/.test(typeof res)){
+      return res;
+   }
+   // 否则返回obj;
+   return obj;
+
+}
+
+
+// es5 实现数组扁平化；
+function myFlat(){
+   _this=this;
+   let newArr=[];
+   let cycleArray=(arr)=>{
+      for(let i=0;i<arr.length;i++){
+         if(Array.isArray(arr[i])){
+            cycleArray(arr[i])
+            continue
+         }else{
+            newArr.push(arr[i]);
+         }
+      }// end of for 
+   }
+   cycleArray(_this);
+   return newArr;
+}
+
+
+// es5实现扁平化；
+const flat=(arr)=>{
+   let newArr=[];
+   let cycleArray=(arr)=>{
+      for(let i=0;i<arr.length;i++){
+         let item=arr[i]
+         if(Array.isArray(item)){
+            cycleArray(item);
+            continue;
+         }else{
+            newArr.push(item);
+         }
+      }// end 
+   }// 
+   cycleArray(arr);
+   return newArr;
+}
+
+// reduce 实现扁平化；
+ const flatReduce=(arr)=>{
+   return arr.reduce((pre,cur,index)=>{
+      return pre.concat(Array.isArray(cur)?flatReduce(cur):cur);
+   },[]);
+ }
+
+ // 原地去重；数组去重；
+function arraySet(arr){
+   let obj={};
+   for(let i=0;i<arr.length;i++){
+      let item=arr[i];
+      if(obj[item]!=='undefined'){
+         // 删除当前元素；
+         arr[i]=arr[arr.length-1]
+         arr.length--;
+         i--
+      }
+      obj[item]=item;
+   }
+   obj=null;
+}
+
+// 基于generator 实现async await ;
+
+function asyncFun(generator){
+   const iterator=generator();
+   const next=(data)=>{
+      let {value,done}=iterator.next(data);
+      if(done){
+         return ;
+      }
+      value.then((data)=>{
+         next(data);
+      });
+
+   }
+   next();
+}
+
+asyncFun(function* (){
+   let data= yield readfile();
+   data=yield readfile2();
+   return data;
+})
+
+
+
+// 基于promise 封装ajax；
+function ajax(url,method){
+  return new Promise((resolve,reject)=>{
+   const  xhr=new XMLHttpRequest();
+   xhr.open(url,method,true);
+   xhr.onreadystatechange=function(){
+      if(xhr.readyState===4){
+         if(xhr.status===200){
+            resolve(xhr.responseText);
+         }else{
+            reject();
+         }
+      }else{
+         reject('req error');
+      }
+   }
+   xhr.send(null);
+  })
+}
+
+
+//手动实现jsonp跨域；
+
+let script =document.createElement('script');
+script.src="http://www.baidu.com?username=json**callback=callback"
+
+document.appendChild(script);
+function  callback(res){
+   console.log(res);
+}
+
+// 手动实现sleep;
+function sleep(wait){
+   return new Promise((resolve,reject)=>{
+      setTimeout(()=>{
+         resolve();
+      },wait);
+   });
+}
+
+// es5实现reduce ;
+
+[].reduce((pre,curr,index,arr)=>{},prev);
+
+
+Array.prototype.myReduce=function(fn,prev){
+   // 遍历当前array;
+   for(let i=0;i<this.length;i++){
+      if(typeof prev==='undefined'){
+         prev=fn(this[i],this[i+1],i+1,this);
+         i++
+      }else{
+         prev=fn(prev,this[i],i,this)
+      }
+   }// end of 
+   return prev;
+}
+
+// 手动实现currying 函数；
+function add(a,b,c,d){
+   return a+b+c+d;
+}
+function currying(fn,...args){
+   // 将函数的参数综合与当前传入的参数长度进行比较；
+   if(fn.length===args.length){
+      return fn(...args);
+   }else{
+      // 返回一个函数接受另外的参数；
+      return function anonymous(...newArgs){
+         let all=[...args,...newArgs]
+         // 递归调用currying;
+         return currying(fn,...all)
+      }
+   }
+}
+
+
+// es5实现一个继承；
+// 寄生继承； 通过构造函数继承属性；通过原型链继承方法；
+
+
+function Parent(name) {
+   this.name = name;
+   this.colors = ['red', 'blue', 'green'];
+ }
+ Parent.prototype.getName = function () {
+   return this.name;
+ }
+ 
+
+function Child(name,age){
+   Parent.call(this,name);
+   this.age=age;
+}
+
+// 寄生组合继承；
+Child.prototype=Object.create(Parent.prototype);
+Child.prototype.constructor=Child;
+Child.prototype.getAge=function(){
+   return this.age;
+}
+
+
+// 手动实现发布订阅；
+// 每次emit 都会触发on callback;
+class EventEmitter{
+   constructor(){
+      this.events={};
+   }
+   on(eventName,callback){
+      if(this.events[eventName]=='undefined'){
+         this.events[eventName]=[callback]
+      }else{
+         this.events[eventName].push(callback);
+      }
+   }
+
+   // 触发事件的方法；
+   emit(eventName){
+      this.events[eventName]&&this.events[eventName].forEach(cb=>cb());
+   }
+}
+
+// 手动实现观察者模式；
+// 观察者模式有观察者，有被观察者；
+// 被观察者 
+class Subject{
+ constructor(name){
+   this.state='happy';
+   this.observers=[];// 存储所有的观察者；
+ }
+ attach(o){
+   this.observers.push(o);
+ }
+ // 更新被观察者；
+ setState(newState){
+   this.state=newState; // 更新状态；
+   this.observers.forEach(o=> o.update(this));
+ }
+}
+
+class Observer{
+   constructor(name){
+      this.name=name;
+   }
+   update(student){
+      console.log('',student);
+   }
+}
+
+let student = new Subject('学生'); 
+
+let parent = new Observer('父母'); 
+let teacher = new Observer('老师'); 
+
+// 被观察者存储观察者的前提，需要先接纳观察者
+student. attach(parent); 
+student. attach(teacher); 
+student. setState('被欺负了');
+
+
+// 手动实现Object.freeze;
+// 冻结一个对象，让其不能再增删改其他属性；
+
+function myFreeze(obj){
+   if(obj instanceof Object){
+      Object.seal(obj); // 封闭对象；
+      for(let key in obj){
+         if(obj.hasOwnProperty(key)){
+            Object.defineProperty(obj,key,{
+               writable:false
+            });
+            // 递归
+            myFreeze(obj[key]);
+         }
+      }
+   }
+}
+
+//手写 Promsie.all
+// 有一个promise 任务失败就全失败；，返回一个promise;
+ function isPromsie(val){
+   return typeof val.then ==='function'
+ }
+
+
+ //promise.all([a,b,c,d]);
+
+Promise.all=function(promises){
+   return new Promise((resolve,reject)=>{
+      let arr=[];//存放promise执行结果；
+      let index=0;// 计数器，累计promise 执行次数；
+      const processData=(key,data)=>{
+         arr[key]=data;
+         if(++index==promises.length){
+            resolve(arr);
+         }
+      }
+      // 遍历依次拿到执行结果；
+      for(let i=0;i<promises.length;i++){
+         let result=promises[i];
+         if(isPromsie(result)){
+            // 原数组顺序依次输出；
+            result.then((data)=>{
+               processData(i,data);
+            },reject);
+         }else{
+            ProcessData(i,result);
+         }
+      }
+   });
+}
+
+Promise.allSettled=function(promises){
+   return new Promise((resolve,reject)=>{
+      let arr=[]; // 存储每个结果的状态；
+      let times=0; // 累加器；
+      // 统计函数；
+      const setData=(i,data)=>{
+         arr[i]=data;
+         if(++times===promises.length){
+            resolve(arr);
+         }
+      }
+      for(let i=0;i<promises.length;i++){
+         let current=promises[i]
+         if(isPromsie(current)){
+            current.then((data)=>{
+               setData(i,{status:'fulfilled',value:data});
+            },err=>{
+               setData(i,{status:'rejected',value:err});
+            });
+         }else{
+            setData(i,{status:'fulfulled',value:current});
+         }
+      }
+
+   });
+}
+
+
+// 手动实现promise.finally;
+Promise.prototype.finally=function(callback){
+   return this.then((data)=>{
+      return Promise.resolve(callback()).then(()=>data);
+   },err=>{
+      return Promise.resolve(callback()).then(()=>{
+         throw err;
+      });
+   })
+}
+
+https://juejin.cn/post/6870319532955828231#heading-42
