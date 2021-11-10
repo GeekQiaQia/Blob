@@ -1,0 +1,175 @@
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/15036e0e50004a338899fc836e859a90~tplv-k3u1fbpfcp-watermark.image?)
+
+# 背景
+简单、快捷、安全、方便永远独立开发者的第一选择。由于我们的团队项目在Github存储和管理，对比与**jenkins** **Travis CI**和**CircleCI**第三方平台，最终选择了用GitHub Actions轻量级的自动化部署来实现CI/CD。
+## GitHub Actions
+
+ [github actions 官方传送门](https://docs.github.com/cn/actions/learn-github-actions/understanding-github-actions)
+ 
+ **GitHub** 提供预配置的工作流程模板，您可以自定义以创建自己的持续集成工作流程。 GitHub 分析代码并显示可能适用于您的仓库的 CI 模板。您也可以从`marketplace`查询选择您需要的Actions CI;
+ 
+ 举例：查询文件copy 与`scp`相关的actions,如下所示： 
+ 
+ [marketplace 官方传送门](https://github.com/marketplace?type=actions&query=scp+)
+ 
+![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9f6cd9504c9483ca7d87625d0a95efc~tplv-k3u1fbpfcp-watermark.image?)
+
+### workflow 基本概念
+
+#### workflow
+
+工作流程，持续集成一次运行的过程，就可以称之为一个workflow
+
+##### `name`
+
+    >工作流程的名称（可空），如果设置，则会在GitHub的操作页面上显示工作流的名称
+
+##### `on`
+
+   > 触发工作流的事件名称。譬如发起的push/pull_request等操作触发。可以只监听某一个事件`string`，或者多个事件。[可以触发工作流程的事件](https://docs.github.com/cn/articles/events-that-trigger-workflows)
+
+    ```
+    # 示例：使用单一事件监听push操作，任意push都会被触发
+    on: push
+    ​
+    #  示例：使用事件列表 监听任意的push和pull_request
+    on: [push, pull_request]
+    ```
+
+    以上俩个示例我们在仓库的任意分支执行push或者pull_request都会触发相应的actions 流程，实际开发中会新建很多分支，而且为了更好的管理流程，test/dev/uat/release等等一系列的对应指定环境的分支名称和发布动作，这时候就不仅需要监听操作，同时也要监听对应的分支名称,来实现定制化的部署配置；
+
+    ```
+    #  示例：使用具有活动类型或配置的多个事件，监听main分支上的push事件
+   on: 
+    push: 
+      branches: 
+        - main
+    ```
+
+##### `job`
+
+`任务`，任务是工作流的主体，一个工作流由一个任务（job）或者多个任务（jobs）构成，表示一次持续集成的运行
+
+###### job_id
+
+   >每个任务都必须要有个id，其实就是一个字符串
+
+######  runs-on
+
+  任务运行的虚拟环境，必须要指定，不然无法工作
+
+    ```
+    # 目前可用的环境
+    Windows Server 2019     windows-latest 或 windows-2019
+    Ubuntu 20.04            ubuntu-20.04
+    Ubuntu 18.04            ubuntu-latest 或 ubuntu-18.04
+    Ubuntu 16.04            ubuntu-16.04
+    macOS Catalina 10.15    macos-latest 或 macos-10.15
+    
+    # 使用
+    runs-on: ubuntu-latest
+    ```
+
+##### `steps`
+
+`步骤`，每个任务由多个step构成，通过一个多或者多个步骤完成一个任务。可以在运行命令、运行任务、运行仓库中的操作、docker注册表中发布操作。
+
+注意点： 不是所有的step都会运行操作，但是所有的操作都会作为step运行，每个step在虚拟环境中都会有个独立的进程，可以访问工作区和文件系统。
+
+###### name
+
+   >步骤名称
+
+###### run
+
+  >该步骤运行的命令或者 action
+
+###### env
+
+  >该步骤所需的环境变量
+
+###### uses
+
+   >选择任务步骤中一部分运行的操作。其实就是步骤使用的`actions`,可以是一个或多个
+## 项目实战
+我们以**实战项目**案例为例：
+
+* 如果 `.github/workflows` 目录不存在，请在 GitHub 的仓库中创建此目录。
+
+* 在 `.github/workflow` 目录中，创建一个名为 `build.yml` 的文件。 更多信息请参阅“[创建新文件](https://docs.github.com/cn/github/managing-files-in-a-repository/creating-new-files)”。
+
+1.  将以下 YAML 内容复制到 `build.yml` 文件中：
+```yml
+name: build
+on: 
+  push: 
+    branches: 
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          lerna bootstrap  # 安装依赖
+          lerna run build  # 执行打包
+      - name: Deploy 🚀
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个安全拷贝(security copy)操作
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+         host: ${{ secrets.DR_HOST }}
+         user: ${{ secrets.DR_USER }}
+         pass: ${{ secrets.DR_PASS }}
+         port: ${{ secrets.DR_PORT }}
+         connect_timeout: 10s
+         first_ssh: |
+            rm -rf /usr/local/webserver/nginx/html/dist
+            mkdir -p /usr/local/webserver/nginx/html/dist
+         scp: |
+           './packages/demoPro/dist/*' => /usr/local/webserver/nginx/html/dist
+           
+```
+由于我们的项目使用monorepo 基于lerna的多包管理项目：
+### `特别注意`
+> scp 安全copy 的`dist`文件是相对于`项目根目录`的路径；'./packages/demoPro/dist/*'
+### **Install and Build 🔧** 
+安装依赖和打包这种使用执行如下命令：
+   ```
+    lerna bootstrap  # 安装依赖  npm install
+    lerna run build  # 执行打包  npm run build
+   ```
+
+### **Deploy 🚀**
+将打包后的`dist`文件部署到我们指定的`远程服务器路径`，我们需要`ssh`连接服务器，并通过`scp`将打包后的文件安全copy到服务器路径：
+
+我们目前使用的是如下action，您也可以根据自己的需要在marketplace选择自己需要的action：
+
+[action 官方传送门](https://github.com/marketplace/actions/ssh-scp-ssh-pipelines)
+```
+cross-the-world/ssh-scp-ssh-pipelines@latest
+
+```
+#### 变量定义以及命名
+为了保护隐私，就需要借助GitHub的Secrets,以变量的方式访问build.yml文件内容；
+如下所示：
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ae1a123192314df5a8f0a3cde227f16d~tplv-k3u1fbpfcp-watermark.image?)
+变量含义以及定义需要根据我们选定的action文档命名即可：
+[action 官方传送门](https://github.com/marketplace/actions/ssh-scp-ssh-pipelines)
+
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/54600c0a54284efab6ee83d09adfffec~tplv-k3u1fbpfcp-watermark.image?)
+## Done
+
+如上完成了一个相对简单的基于github actions的CI/CD;我们可以通过触发main分支的push事件，来测试打包以后的文件是否部署到服务器指定目录；
+
+登录服务器执行查看命令
+```
+cd  /usr/local/webserver/nginx/html/
+```
